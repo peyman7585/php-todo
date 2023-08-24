@@ -1,0 +1,16 @@
+{
+    "name": "peyman1/7todo",
+    "description": "a simple Rodo list project (with ajax, php , mysql)",
+    "type": "project",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "peyman abbaszadeh",
+            "email": "abbaszadeh.8575@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.3"
+    }
+}

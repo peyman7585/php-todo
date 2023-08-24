@@ -5,8 +5,8 @@ echo implode('_',getTasks()).rand(1,100) ;
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Task manager UI</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <title><?=  SITE_TITLE;?></title>
+  <link rel="stylesheet" href="<?= BASE_URL;?>assets/css/style.css">
 
 </head>
 <body>
