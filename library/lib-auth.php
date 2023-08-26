@@ -1,4 +1,7 @@
 <?php
+function getCurrendUseId(){
+    return 1;
+  }
 function login($user,$password){
     return 1;
 }

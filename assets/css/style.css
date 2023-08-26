@@ -3,7 +3,9 @@
 html {
   background-color: #8dbfc9;
 }
-
+a{
+text-decoration: none;
+}
 body {
   padding: 0px;
   margin: 0px;
@@ -12,7 +14,26 @@ body {
   font-smoothing: antialiased;
 
 }
-
+input{
+  width: 70%;
+  padding: 3px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.remove{
+  color: red !important;
+  float: right;
+  font-weight: 200;
+  padding-right: 5px;
+}
+a.remove:hover{
+  font-weight: 700;
+}
+.btn{
+  padding: 3px 10px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
 .page {
   position: absolute;
   width: 80%;
@@ -120,6 +141,9 @@ body {
 }
 .main .nav .menu ul {
   padding-left: 0px;
+}
+.main .nav .menu ul li a{
+color: #0c7388;
 }
 .main .nav .menu ul li {
   cursor: pointer;

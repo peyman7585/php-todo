@@ -21,14 +21,23 @@
         </div>
       </div>
       <div class="menu">
-        <div class="title">Navigation</div>
+        <div class="title">FOLDERS</div>
         <ul>
-          <li> <i class="fa fa-home"></i>Home</li>
-          <li><i class="fa fa-signal"></i>Activity</li>
-          <li class="active"> <i class="fa fa-tasks"></i>Manage Tasks</li>
-          <li> <i class="fa fa-envelope"></i>Messages</li>
+          <?php foreach($folders as $folder):?>
+          <li> 
+            <a href="?folder=<?= $folder->id?>"> <i class="fa fa-folder"></i><?= $folder->name?></a>
+            <a href="?DeleteFolder=<?= $folder->id?>" class="remove">x</a>
+          </li>
+          <?php endforeach;?>
+          <li class="active"><i  class="fa fa-folder"></i>current Folder</li>
+     
         </ul>
       </div>
+       <div>
+          <input type="text" id="NewFolderInput" placeholder="Add New Folder"/>
+          <button id="NewFolderbtn" class="btn">+</button>
+        </div>
+
     </div>
     <div class="view">
       <div class="viewHeader">
