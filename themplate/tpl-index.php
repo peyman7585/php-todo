@@ -1,6 +1,3 @@
-<?php
-echo implode('_',getTasks()).rand(1,100) ;
-?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
