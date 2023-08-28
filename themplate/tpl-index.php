@@ -25,7 +25,7 @@
         <ul class="folder_list">
           <?php foreach($folders as $folder):?>
           <li> 
-            <a href="?folder=<?= $folder->id?>"> <i class="fa fa-folder"></i><?= $folder->name?></a>
+            <a href="?folder=<?= $folder->id?>" id="<?= $folder->id?>" class="folder_id">  <i class="fa fa-folder" ></i><?= $folder->name?></a>
             <a href="?DeleteFolder=<?= $folder->id?>" class="remove">x</a>
           </li>
           <?php endforeach;?>
@@ -87,15 +87,16 @@
     $(document).ready(function(){
        $('#AddFolderbtn').click(function(e){
         var input=$('#AddFolderInput');
+        var id=$('.folder_id').attr('id');
          $.ajax({
         url:"process/ajaxHandler.php",
         method:"post",
-        data:{action: "addfolder",folderName:input.val()},
+        data:{action: "addfolder",folderName:input.val(),folderid:id},
         success:function(response){
            if(response == 1){
-           $('<li> <a href="#"> <i class="fa fa-folder"></i>'+input.val()+'</a></li> ').appendTo('ul.folder_list');
+           $('<li> <a href="'+id+'"> <i class="fa fa-folder"></i>'+input.val()+'</a></li> ').appendTo('ul.folder_list');
            }else{
-            alert(response)
+         alert(response);
            }
         }
          });

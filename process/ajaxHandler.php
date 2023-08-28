@@ -15,7 +15,8 @@ switch($_POST['action']){
         echo "you should use more than 3 word for your name folder";
         die();
     }
-      echo  AddFolders($_POST['folderName']); 
+       echo  AddFolders($_POST['folderName']); 
+
         break;
     case "addTask":
         // var_dump($_POST);
