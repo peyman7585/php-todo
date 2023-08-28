@@ -20,14 +20,16 @@ function getFolders(){
    $recored=$stmt->fetchAll(PDO::FETCH_OBJ);
   return $recored;
 }
-function AddFolders(){
+function AddFolders($folder_name){
   global $pdo;
-   $sql="SELECT * from folders";
+  $currend_use_id=getCurrendUseId();
+   $sql="INSERT INTO `folders`(name,user_id ) VALUES (:folder_name,:user_id) ";
    $stmt=$pdo->prepare($sql);
-   $stmt->execute();
-   $recored=$stmt->fetchAll(PDO::FETCH_OBJ);
-  return $recored;
+   $stmt->execute(['folder_name'=>$folder_name,'user_id'=>$currend_use_id]);
+   return $stmt->rowCount();
 }
+
+
 //**task function** *//
 function getTasks(){
   return 1;

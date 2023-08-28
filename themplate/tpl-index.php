@@ -22,7 +22,7 @@
       </div>
       <div class="menu">
         <div class="title">FOLDERS</div>
-        <ul>
+        <ul class="folder_list">
           <?php foreach($folders as $folder):?>
           <li> 
             <a href="?folder=<?= $folder->id?>"> <i class="fa fa-folder"></i><?= $folder->name?></a>
@@ -34,8 +34,10 @@
         </ul>
       </div>
        <div>
-          <input type="text" id="NewFolderInput" placeholder="Add New Folder"/>
-          <button id="NewFolderbtn" class="btn">+</button>
+       
+          <input type="text" id="AddFolderInput" placeholder="Add New Folder"/>
+          <button id="AddFolderbtn" class="btn clickAble">+</button>
+
         </div>
 
     </div>
@@ -81,6 +83,26 @@
 </div>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./assets/js/script.js"></script>
+   <script>
+    $(document).ready(function(){
+       $('#AddFolderbtn').click(function(e){
+        var input=$('#AddFolderInput');
+         $.ajax({
+        url:"process/ajaxHandler.php",
+        method:"post",
+        data:{action: "addfolder",folderName:input.val()},
+        success:function(response){
+           if(response == 1){
+           $('<li> <a href="#"> <i class="fa fa-folder"></i>'+input.val()+'</a></li> ').appendTo('ul.folder_list');
+           }else{
+            alert(response)
+           }
+        }
+         });
+       });
+    
 
+    });
+   </script>
 </body>
 </html>
