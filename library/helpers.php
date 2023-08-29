@@ -14,3 +14,9 @@ function isAjaxRequest(){
     }
     return false;
 }
+
+function dd($var){
+    echo "<pre style= 'color: red; background: #fff; z-index: 999; position: relative; padding: 10px; margin: 10px; border-radius: 5px solid blue; border-left: 3px solid brown;'>";
+    var_dump($var);
+    echo "</pre>";
+}

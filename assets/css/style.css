@@ -20,6 +20,10 @@ input{
   border-radius: 3px;
   border: 1px solid #ccc;
 }
+.create-at{
+  font-size: 11px;
+  margin-right: 12px;
+}
 .remove{
   color: red !important;
   float: right;
@@ -138,6 +142,9 @@ a.remove:hover{
   margin: 15px;
   color: #555;
 }
+.title {
+  width: 50%;
+}
 .main .nav .menu .title {
   font-weight: 700;
   font-size: 1.0em;
@@ -148,6 +155,9 @@ a.remove:hover{
 }
 .main .nav .menu ul li a{
 color: #0c7388;
+}
+.main .nav .menu ul li.active a{
+color: #79BC46 !important;
 }
 .main .nav .menu ul li {
   cursor: pointer;

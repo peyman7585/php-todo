@@ -38,14 +38,32 @@ function AddFolders($folder_name){
 
 //**task function** *//
 function getTasks(){
-  return 1;
+  global $pdo;
+  $currend_use_id=getCurrendUseId();
+  $folder=$_GET['folder'] ?? null;
+  $folderCondition='';
+  if(isset($folder) and is_numeric($folder)){
+    $folderCondition="and folder_id=$folder";
+  }
+   $sql="SELECT * from tasks where user_id=$currend_use_id $folderCondition ";
+   $stmt=$pdo->prepare($sql);
+   $stmt->execute();
+   $recored=$stmt->fetchAll(PDO::FETCH_OBJ);
+  return $recored;
   }
   
 function AddTasks(){
   return 1;
   }
   
-function DeleteTasks(){
-  return 1;
-  }
+function DeleteTasks($task_id){
+  global $pdo;
+
+   $sql="DELETE from tasks where id=$task_id";
+   $stmt=$pdo->prepare($sql);
+   $stmt->execute();
+ 
+  return $stmt->rowCount();
+}
+
   
