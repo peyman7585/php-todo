@@ -1,4 +1,9 @@
 <?php 
+// if(!defined('BASE_PATH')){
+//   echo 'permision denied';
+//   die();
+// }
+defined('BASE_PATH') OR die('permision denied');
 
 //***folder function ***/
 function DeleteFolder($folder_id){
@@ -10,6 +15,7 @@ function DeleteFolder($folder_id){
  
   return $stmt->rowCount();
 }
+
 function getFolders(){
   global $pdo;
   $currend_use_id=getCurrendUseId();
