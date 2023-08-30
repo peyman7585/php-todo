@@ -15,12 +15,22 @@ switch($_POST['action']){
         echo "you should use more than 3 word for your name folder";
         die();
     }
-       echo  AddFolders($_POST['folderName']); 
+       echo  AddFolder($_POST['folderName']); 
 
         break;
     case "addTask":
-        // var_dump($_POST);
-        break;
+        $folderID=$_POST['folderId'];
+        $taskTitle=$_POST['taskTitle'];
+        if(!isset($folderID) || empty($folderID)) {
+            echo "select the folder";
+            die();
+        }
+        if(!isset($taskTitle) || strlen($taskTitle) <3) {
+            echo "you should use more than 3 word for your name tasks";
+            die();
+        }
+      echo addTask($taskTitle,$folderID);
+        break; 
         
     default;    
 }

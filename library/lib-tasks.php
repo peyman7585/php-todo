@@ -26,7 +26,7 @@ function getFolders(){
    $recored=$stmt->fetchAll(PDO::FETCH_OBJ);
   return $recored;
 }
-function AddFolders($folder_name){
+function AddFolder($folder_name){
   global $pdo;
   $currend_use_id=getCurrendUseId();
    $sql="INSERT INTO `folders`(name,user_id ) VALUES (:folder_name,:user_id) ";
@@ -52,8 +52,13 @@ function getTasks(){
   return $recored;
   }
   
-function AddTasks(){
-  return 1;
+function AddTask($taskTitle,$folderId){
+  global $pdo;
+  $currend_use_id=getCurrendUseId();
+   $sql="INSERT INTO `tasks`(title,user_id,folder_id ) VALUES (:title,:user_id,:folder_id) ";
+   $stmt=$pdo->prepare($sql);
+   $stmt->execute(['title'=>$taskTitle,'user_id'=>$currend_use_id,'folder_id'=>$folderId]);
+   return $stmt->rowCount();
   }
   
 function DeleteTasks($task_id){

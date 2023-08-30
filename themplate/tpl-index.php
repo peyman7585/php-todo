@@ -25,7 +25,7 @@
         <ul class="folder_list">
         <li class="<?= isset($_GET['folder']) ? '':'active'?>"><i  class="fa fa-folder"></i>All</li>
           <?php foreach($folders as $folder):?>
-          <li class="<?= ($_GET['folder']==$folder->id) ?'active':''?>">
+          <li class="<?= (@$_GET['folder'] == $folder->id) ? 'active':''?>">
             <a href="?folder=<?= $folder->id?>" id="<?= $folder->id?>" class="folder_id"><i class="fa fa-folder" ></i><?= $folder->name?></a>
             <a href="?DeleteFolder=<?= $folder->id?>" onclick="return confirm('are you sure to delete this item\n<?= $folder->name?>')"  class="remove">x</a>
           </li>
@@ -100,8 +100,24 @@
         }
          });
        });
-    
-
+     $('#taskNameInput').on('keypress',function(e){
+      
+     if(e.which ==13){
+      $.ajax({
+        url:"process/ajaxHandler.php",
+        method:"post",
+        data:{action: "addTask",folderId:<?= $_GET['folder']?>,taskTitle:$('#taskNameInput').val()},
+        success:function(response){
+           if(response == 1){
+        location.reload();
+           }else{
+         alert(response);
+           }
+        }
+         });
+     }
+     });
+     $('#taskNameInput').focus();
     });
    </script>
 </body>
