@@ -35,6 +35,15 @@ function AddFolder($folder_name){
    return $stmt->rowCount();
 }
 
+function DoneSwitch($task_id){
+  global $pdo;
+  $currend_user_id=getCurrendUseId();
+   $sql="UPDATE `tasks` SET is_done =1 - is_done where user_id= :userid and id= :task_ID ";
+   $stmt=$pdo->prepare($sql);
+   $stmt->execute([':task_ID'=>$task_id,':userid' =>$currend_user_id]);
+   return $stmt->rowCount();
+}
+
 
 //**task function** *//
 function getTasks(){

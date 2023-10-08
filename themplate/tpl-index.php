@@ -65,7 +65,7 @@
           <?php if(sizeof($tasks) > 0):?>
           <?php foreach($tasks as $task):?>
             <li class="<?= $task->is_done ? 'checked' :'';?>">
-            <i class="<?= $task->is_done ? 'fa fa-check-square-o' :'fa fa-square-o';?>"></i>
+            <i data-Taskid="<?= $task->id?>" class=" isDone clickAble <?= $task->is_done ? 'fa fa-check-square-o' :'fa fa-square-o';?>"></i>
    
             <span><?= $task->title;?></span>
               <div class="info">
@@ -86,6 +86,9 @@
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./assets/js/script.js"></script>
    <script>
+
+
+    // Add Folder
     $(document).ready(function(){
        $('#AddFolderbtn').click(function(e){
         var input=$('#AddFolderInput');
@@ -103,6 +106,26 @@
         }
          });
        });
+
+
+   // checked =is done;
+     $('.isDone').click(function(e){
+      var TaskID=$(this).attr('data-Taskid');
+    
+      $.ajax({
+        url:"process/ajaxHandler.php",
+        method:"post",
+        data:{action: "DoneSwitch",taskId:TaskID},
+        success:function(response){
+         
+        location.reload();
+       
+        }
+         });
+     })
+
+
+    // Add tasks
      $('#taskNameInput').on('keypress',function(e){
       
      if(e.which ==13){

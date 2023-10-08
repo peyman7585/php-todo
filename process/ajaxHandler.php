@@ -10,11 +10,22 @@ if(!isset($_POST['action']) || empty($_POST['action'])){
 }
 
 switch($_POST['action']){
-    case "addfolder":
-    if(!isset($_POST['folderName']) || strlen($_POST['folderName']) < 3){
-        echo "you should use more than 3 word for your name folder";
+
+    case "DoneSwitch":
+        $task_id=$_POST['taskId'];
+    if(!isset($task_id) || !is_numeric($task_id)){
+        echo "yinvalid ID number";
         die();
     }
+       
+       DoneSwitch($task_id);
+            break;
+
+    case "addfolder":
+         if(!isset($_POST['folderName']) || strlen($_POST['folderName']) < 3){
+        echo "you should use more than 3 word for your name folder";
+        die();
+             }
        echo  AddFolder($_POST['folderName']); 
 
         break;
@@ -32,5 +43,6 @@ switch($_POST['action']){
       echo addTask($taskTitle,$folderID);
         break; 
         
-    default;    
+    default;   
+    diePage('invalid action');
 }
