@@ -23,11 +23,14 @@
       <div class="menu">
         <div class="title">FOLDERS</div>
         <ul class="folder_list">
-        <li class="<?= isset($_GET['folder']) ? '':'active'?>"><i  class="fa fa-folder"></i>All</li>
+        <li class="<?= isset($_GET['folder']) ? '':'active'?>">
+        <a href="<?= site_url();?> ">
+          <i  class="fa fa-folder"></i>All</a>
+        </li>
           <?php foreach($folders as $folder):?>
           <li class="<?= (@$_GET['folder'] == $folder->id) ? 'active':''?>">
-            <a href="?folder=<?= $folder->id?>" id="<?= $folder->id?>" class="folder_id"><i class="fa fa-folder" ></i><?= $folder->name?></a>
-            <a href="?DeleteFolder=<?= $folder->id?>" onclick="return confirm('are you sure to delete this item\n<?= $folder->name?>')"  class="remove">x</a>
+            <a href="<?= site_url("?folder= $folder->id");?>" id="<?= $folder->id?>" class="folder_id"><i class="fa fa-folder" ></i><?= $folder->name?></a>
+            <a href="<?= site_url("?DeleteFolder=$folder->id");?>" onclick="return confirm('are you sure to delete this item\n<?= $folder->name?>')"  class="remove">x</a>
           </li>
           <?php endforeach;?>
      
@@ -106,7 +109,7 @@
       $.ajax({
         url:"process/ajaxHandler.php",
         method:"post",
-        data:{action: "addTask",folderId:<?= $_GET['folder']?>,taskTitle:$('#taskNameInput').val()},
+        data:{action: "addTask",folderId:<?= $_GET['folder'] ?? 0 ?>,taskTitle:$('#taskNameInput').val()},
         success:function(response){
            if(response == 1){
         location.reload();

@@ -8,6 +8,9 @@ function diePage($msg){
     echo "<div> $msg</div>";
     die();
 }
+function site_url($uri=""){
+    return BASE_URL. $uri;
+}
 function isAjaxRequest(){
     if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest' ) {
         return true;
