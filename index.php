@@ -1,5 +1,10 @@
 <?php
 include 'bootstrap/init.php'; 
+
+if(!isLoggedIn()){
+
+   header("Location:" .site_url('auth.php'));
+}
 use Hekmatinasser\Verta\Verta;
 if(isset($_GET['DeleteFolder']) && is_numeric($_GET['DeleteFolder'])){
   $deleteCount= DeleteFolder($_GET['DeleteFolder']);

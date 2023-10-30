@@ -8,6 +8,10 @@ function diePage($msg){
     echo "<div> $msg</div>";
     die();
 }
+function ErrorMessage($msg){
+    echo "<div> $msg</div>";
+
+}
 function site_url($uri=""){
     return BASE_URL. $uri;
 }
