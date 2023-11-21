@@ -4,6 +4,10 @@ defined('BASE_PATH') OR die('permision denied');
 function getCurrentUrl(){
     return 1;
 }
+function Redirect($url){
+    header("Location:" .$url);
+    die();
+}
 function diePage($msg){
     echo "<div> $msg</div>";
     die();

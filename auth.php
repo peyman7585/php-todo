@@ -12,7 +12,7 @@ include 'bootstrap/init.php';
         ErrorMessage("Error: an error in registration");
         }else{
             ErrorMessage("Registration is successfull => welcome .<br>
-             <a href='".$home_url."'>Manage your tasks</a>
+             <a href='{$home_url}auth.php'>Please Loggin</a>
             ");
         }
 
@@ -21,6 +21,11 @@ include 'bootstrap/init.php';
         $result= login($params['email'],$params['password']);
         if(!$result){
             ErrorMessage("Error: Email or password is incurect");
+            }else{
+                // ErrorMessage("You are logged in now .<br>
+                //  <a href='{$home_url}'>Manage your tasks</a>
+                // ");
+                Redirect(site_url());
             }
     }
 }
